@@ -12,9 +12,15 @@ export default function ThemeProvider({
   const [theme, setTheme] =
     useState("light");
 
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+body.light{
+  background:#f5f5f5;
+  color:black;
+}
+
+body.dark{
+  background:#0f172a;
+  color:white;
+}
 
   const toggleTheme = () => {
     setTheme(

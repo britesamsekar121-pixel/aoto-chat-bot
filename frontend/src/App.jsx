@@ -6,20 +6,16 @@ import {
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
-function Dashboard() {
-  return (
-    <h1>
-      Dashboard Coming Soon
-    </h1>
-  );
-}
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
   return (
     <BrowserRouter>
-
       <Routes>
+
+        {/* Public Routes */}
 
         <Route
           path="/"
@@ -31,13 +27,18 @@ export default function App() {
           element={<Register />}
         />
 
+        {/* Protected Route */}
+
         <Route
           path="/dashboard"
-          element={<Dashboard />}
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
 
       </Routes>
-
     </BrowserRouter>
   );
 }

@@ -34,6 +34,18 @@ export default function Sidebar() {
         Settings
       </Link>
 
+      <Link to="/profile">
+        Profile
+      </Link>
+
+      <Link to="/settings">
+        Settings
+      </Link>
+
+      <Link to="/chat">
+        Chat
+      </Link>
+
       <button
         onClick={logout}
       >
@@ -43,6 +55,3 @@ export default function Sidebar() {
     </div>
   );
 }
-<Link to="/chat">
-  Chat
-</Link>

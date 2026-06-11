@@ -7,6 +7,8 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -24,7 +26,23 @@ export default function App() {
     </ProtectedRoute>
   }
 />
+        <Route
+          path="/profile"
+          element={
+        <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  }
+/>
 
+        <Route
+          path="/settings"
+          element={
+        <ProtectedRoute>
+      <Settings />
+    </ProtectedRoute>
+  }
+/>
         <Route
           path="/"
           element={<Login />}

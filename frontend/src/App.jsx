@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Chat from "./pages/Chat";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 

@@ -43,3 +43,6 @@ export default function Sidebar() {
     </div>
   );
 }
+<Link to="/chat">
+  Chat
+</Link>

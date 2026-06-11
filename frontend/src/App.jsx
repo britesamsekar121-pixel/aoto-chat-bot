@@ -16,6 +16,14 @@ export default function App() {
       <Routes>
 
         {/* Public Routes */}
+        <Route
+  path="/chat"
+  element={
+    <ProtectedRoute>
+      <Chat />
+    </ProtectedRoute>
+  }
+/>
 
         <Route
           path="/"

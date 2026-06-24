@@ -4,6 +4,7 @@ import {
   Route
 } from "react-router-dom";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -18,34 +19,13 @@ export default function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Public Routes */}
-        <Route
-  path="/chat"
-  element={
-    <ProtectedRoute>
-      <Chat />
-    </ProtectedRoute>
-  }
-/>
-        <Route
-          path="/profile"
-          element={
-        <ProtectedRoute>
-      <Profile />
-    </ProtectedRoute>
-  }
-/>
-
-        <Route
-          path="/settings"
-          element={
-        <ProtectedRoute>
-      <Settings />
-    </ProtectedRoute>
-  }
-/>
         <Route
           path="/"
+          element={<Home />}
+        />
+
+        <Route
+          path="/login"
           element={<Login />}
         />
 
@@ -54,13 +34,38 @@ export default function App() {
           element={<Register />}
         />
 
-        {/* Protected Route */}
-
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
             </ProtectedRoute>
           }
         />

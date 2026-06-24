@@ -4,8 +4,11 @@ export default function PersonalityCard({
 }) {
   return (
     <div className="personality-card">
+
       <h3>{title}</h3>
-      <p>{value}</p>
+
+      <h2>{value}%</h2>
+
     </div>
   );
 }

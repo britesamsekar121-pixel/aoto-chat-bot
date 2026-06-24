@@ -1,67 +1,79 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] =
-    useState("");
-
-  const [password, setPassword] =
-    useState("");
-
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        email
-      })
-    );
-
-    navigate("/dashboard");
+    if (
+      formData.email.trim() &&
+      formData.password.trim()
+    ) {
+      navigate("/dashboard");
+    } else {
+      alert("Please fill all fields");
+    }
   };
 
   return (
-    <div className="container">
+    <div className="login-page">
 
-      <form
-        className="card"
-        onSubmit={handleSubmit}
-      >
-        <h1>Mind Mate AI</h1>
+      <div className="login-card">
 
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          onChange={(e)=>
-            setEmail(e.target.value)
-          }
-        />
+        <h1 className="logo">
+          MINDMATE AI
+        </h1>
 
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          onChange={(e)=>
-            setPassword(e.target.value)
-          }
-        />
+        <p className="subtitle">
+          Your Intelligent Companion
+        </p>
 
-        <button>
-          Login
-        </button>
+        <form onSubmit={handleSubmit}>
 
-        <p>
-          New User?
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+          <button type="submit">
+            Login
+          </button>
+
+        </form>
+
+        <p className="register-text">
+          Don't have an account?
           <Link to="/register">
             Register
           </Link>
         </p>
 
-      </form>
+      </div>
 
     </div>
   );

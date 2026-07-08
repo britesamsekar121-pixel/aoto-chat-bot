@@ -1,75 +1,92 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 export default function Register() {
 
-  const [name, setName] =
-    useState("");
+  const navigate = useNavigate();
 
-  const [email, setEmail] =
-    useState("");
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
 
-  const [password, setPassword] =
-    useState("");
+  const handleChange = (e) => {
+
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+
+  };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
-    alert(
-      "Registration API will be connected later"
-    );
+    alert("Registration Successful!");
+
+    navigate("/login");
+
   };
 
   return (
-    <div className="container">
 
-      <form
-        className="card"
-        onSubmit={handleSubmit}
-      >
+    <div className="login-page">
+
+      <div className="login-card">
 
         <h1>Create Account</h1>
 
-        <input
-          type="text"
-          placeholder="Name"
-          required
-          onChange={(e)=>
-            setName(e.target.value)
-          }
-        />
+        <form onSubmit={handleSubmit}>
 
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          onChange={(e)=>
-            setEmail(e.target.value)
-          }
-        />
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={user.name}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          onChange={(e)=>
-            setPassword(e.target.value)
-          }
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={user.email}
+            onChange={handleChange}
+            required
+          />
 
-        <button>
-          Register
-        </button>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={user.password}
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit">
+            Register
+          </button>
+
+        </form>
 
         <p>
-          Already have account?
-          <Link to="/">
+
+          Already have an account?
+
+          <Link to="/login">
             Login
           </Link>
+
         </p>
 
-      </form>
+      </div>
 
     </div>
+
   );
+
 }

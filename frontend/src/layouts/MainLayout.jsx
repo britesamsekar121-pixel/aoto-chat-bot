@@ -1,26 +1,30 @@
-import Navbar from "../components/Navbar";
+// src/layouts/MainLayout.jsx
+
 import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
-export default function MainLayout({
-  children
-}) {
+const MainLayout = ({ children }) => {
   return (
-    <div className="layout">
+    <div className="flex h-screen bg-gray-100 dark:bg-slate-950 overflow-hidden">
 
+      {/* Left Sidebar */}
       <Sidebar />
 
-      <div className="content">
+      {/* Right Content */}
+      <div className="flex flex-1 flex-col overflow-hidden">
 
+        {/* Top Navbar */}
         <Navbar />
 
-        <div
-          className="page-content"
-        >
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-100 dark:bg-slate-950">
           {children}
-        </div>
+        </main>
 
       </div>
 
     </div>
   );
-}
+};
+
+export default MainLayout;
